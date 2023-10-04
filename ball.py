@@ -13,11 +13,10 @@ def degree(time: float, acc: float, rad: float, vel: float) -> int:
         vel (float): speed
 
     Returns:
-        res (int): result.
+        (int): result.
     """
     lenght = 2 * pi * rad
     way = vel * time + acc * time ** 2 / 2
     turn = way / lenght
     circle = 360
-    res = int(circle * (abs(floor(turn) - turn)))
-    return res
+    return int(circle * (abs(floor(turn) - turn)))
