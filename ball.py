@@ -1,22 +1,23 @@
-"""Count angle of deflection."""
+"""Module for calculate degrees of displacement."""
+from math import pi
 
-from math import floor, pi
+degree_all_circ = 360
 
 
-def degree(time: float, acc: float, rad: float, vel: float) -> int:
-    """Count angle.
+def get_degree(time: float, acceleration: float, radius: float, speed: float | None = 0) -> int:
+    """Get the degree of a given distance.
 
     Args:
-        time (float): time
-        acc (float): acceleration
-        rad (float): radius
-        vel (float): speed
+        time (float): The time in seconds to travel that distance.
+        acceleration (float): Acceleration in meters/(seconds in square) this distance.
+        radius (float): The radius in meters of the circle.
+        speed (float, optional): The speed in meters/seconds for distance. Defaults to 0.
 
     Returns:
-        (int): result.
+        Degree of displacement
     """
-    lenght = 2 * pi * rad
-    way = vel * time + acc * time ** 2 / 2
-    turn = way / lenght
-    circle = 360
-    return int(circle * (abs(floor(turn) - turn)))
+    circ_len = 2 * pi * radius
+    distance = speed * time + acceleration * (time ** 2) / 2
+    degree = 0 if circ_len == 0 else distance % circ_len / circ_len * degree_all_circ
+
+    return round(degree, 2)
