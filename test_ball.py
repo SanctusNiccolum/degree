@@ -1,23 +1,23 @@
-"""Test."""
+"""Module for testing the main file."""
+
 
 import pytest
 
-from ball import degree
+from main import get_degree
 
-test = (
-    ((4, 3, 4, 12), 311),
-    ((1, 2, 4, 2), 42),
-    ((8, 3, 7, 0), 65),
-    ((0, 3, 7, 0), 0),
+test_data = (
+    ((100, 2400, 600, 4), 73.79),
+    ((0, 0, 0), 0),
+    ((10, 20, 30, 40), 153.8),
 )
 
 
-@pytest.mark.parametrize('source, expected', test)
-def test_degree(source: tuple[float], expected: int):
-    """Test function.
+@pytest.mark.parametrize('args, expected', test_data)
+def test_get_degree(args, expected) -> None:
+    """Check if the counts degrees well or not.
 
     Args:
-        source (tuple[float]): data for test.
-        expected (int): expected values.
+        args (_type_): _description_
+        expected (_type_): The right answer we should receive.
     """
-    assert degree(*source) == expected
+    assert get_degree(*args) == expected
