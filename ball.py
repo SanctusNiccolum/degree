@@ -1,10 +1,10 @@
-"""Count angle of deflection"""
+"""Count angle of deflection."""
 
-from math import pi, floor
+from math import floor, pi
 
 
 def degree(time: float, acc: float, rad: float, vel: float) -> int:
-    """Count angle
+    """Count angle.
 
     Args:
         time (float): time
@@ -13,7 +13,7 @@ def degree(time: float, acc: float, rad: float, vel: float) -> int:
         vel (float): speed
 
     Returns:
-        int: res
+        res (int): result.
     """
     lenght = 2 * pi * rad
     way = vel * time + acc * time ** 2 / 2
@@ -21,6 +21,3 @@ def degree(time: float, acc: float, rad: float, vel: float) -> int:
     circle = 360
     res = int(circle * (abs(floor(turn) - turn)))
     return res
-
-
-print(degree(0, 3, 7, 0))
